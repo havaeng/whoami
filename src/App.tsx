@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { animate, stagger } from 'animejs'
 import './App.css'
 import {
   DEFAULT_LOCALE,
@@ -10,34 +11,27 @@ import {
 
 const LANGUAGE_QUERY_PARAM = 'lang'
 const LANGUAGE_STORAGE_KEY = 'whoami.language'
-const SECTION_ORDER: SectionKey[] = ['career', 'education', 'nonProfit']
+const SECTION_ORDER: SectionKey[] = ['about', 'career', 'education', 'nonProfit']
 
 function getInitialLanguage(): Locale {
   const params = new URLSearchParams(window.location.search)
   const urlLanguage = params.get(LANGUAGE_QUERY_PARAM)
-
-  if (isLocale(urlLanguage)) {
-    return urlLanguage
-  }
-
+  if (isLocale(urlLanguage)) return urlLanguage
   const storedLanguage = window.localStorage.getItem(LANGUAGE_STORAGE_KEY)
-  if (isLocale(storedLanguage)) {
-    return storedLanguage
-  }
-
+  if (isLocale(storedLanguage)) return storedLanguage
   return DEFAULT_LOCALE
 }
 
 function App() {
   const [language, setLanguage] = useState<Locale>(getInitialLanguage)
-  const [activeSection, setActiveSection] = useState<SectionKey>('career')
+  const [activeSection, setActiveSection] = useState<SectionKey>('about')
+  const contentRef = useRef<HTMLDivElement>(null)
 
   const t = translations[language]
-  const section = useMemo(() => t.sections[activeSection], [activeSection, t])
 
+  // URL + localStorage sync
   useEffect(() => {
     window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language)
-
     const params = new URLSearchParams(window.location.search)
     if (params.get(LANGUAGE_QUERY_PARAM) !== language) {
       params.set(LANGUAGE_QUERY_PARAM, language)
@@ -50,37 +44,181 @@ function App() {
   useEffect(() => {
     const onPopState = () => {
       const urlLanguage = new URLSearchParams(window.location.search).get(LANGUAGE_QUERY_PARAM)
-      if (isLocale(urlLanguage)) {
-        setLanguage(urlLanguage)
-      }
+      if (isLocale(urlLanguage)) setLanguage(urlLanguage)
     }
-
     window.addEventListener('popstate', onPopState)
     return () => window.removeEventListener('popstate', onPopState)
   }, [])
 
+  // Topbar entrance on mount
+  useEffect(() => {
+    animate('.app-title', {
+      opacity: [0, 1],
+      translateY: [-16, 0],
+      duration: 600,
+      easing: 'easeOutCubic',
+    })
+    animate('.topbar nav li', {
+      opacity: [0, 1],
+      translateY: [-16, 0],
+      delay: stagger(60, { start: 80 }),
+      duration: 500,
+      easing: 'easeOutCubic',
+    })
+    animate('.language-picker', {
+      opacity: [0, 1],
+      translateY: [-16, 0],
+      duration: 500,
+      delay: 300,
+      easing: 'easeOutCubic',
+    })
+  }, [])
+
+  // Content transition on section change
+  useEffect(() => {
+    if (!contentRef.current) return
+
+    animate(contentRef.current, {
+      opacity: [0, 1],
+      translateY: [18, 0],
+      duration: 420,
+      easing: 'easeOutCubic',
+    })
+
+    if (activeSection === 'about') {
+      animate('.portrait', {
+        opacity: [0, 1],
+        scale: [0.94, 1],
+        duration: 700,
+        delay: 80,
+        easing: 'easeOutCubic',
+      })
+      animate('.about-text', {
+        opacity: [0, 1],
+        translateY: [20, 0],
+        duration: 500,
+        delay: 180,
+        easing: 'easeOutCubic',
+      })
+    } else {
+      animate('.content-list li, .entry-card', {
+        opacity: [0, 1],
+        translateX: [-16, 0],
+        delay: stagger(70, { start: 120 }),
+        duration: 400,
+        easing: 'easeOutCubic',
+      })
+    }
+  }, [activeSection])
+
+  const renderContent = () => {
+    if (activeSection === 'about') {
+      const about = t.sections.about
+      return (
+        <div className="about-section">
+          <img
+            src="/portrait.jpeg"
+            alt={about.portraitAlt}
+            className="portrait"
+          />
+          <div className="about-text">
+            <h2>{about.title}</h2>
+            <p>{about.bio}</p>
+          </div>
+        </div>
+      )
+    }
+
+    if (activeSection === 'career') {
+      const career = t.sections.career
+      return (
+        <>
+          <h2>{career.title}</h2>
+          <div className="career-entries">
+            {career.entries.map((entry) => (
+              <div className="entry-card" key={`${entry.employer}-${entry.role}`}>
+                <div className="entry-header">
+                  <img src={entry.logo} alt={entry.employer} className="entry-logo" />
+                  <div className="entry-meta">
+                    <h3 className="entry-org">{entry.employer}</h3>
+                    <span className="entry-sub">{entry.role}</span>
+                  </div>
+                  <span className="entry-period">{entry.period}</span>
+                </div>
+                <ul className="content-list">
+                  {entry.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </>
+      )
+    }
+
+    if (activeSection === 'education') {
+      const education = t.sections.education
+      return (
+        <>
+          <h2>{education.title}</h2>
+          <div className="career-entries">
+            {education.entries.map((entry) => (
+              <div className="entry-card" key={`${entry.institution}-${entry.programme}`}>
+                <div className="entry-header">
+                  <img src={entry.logo} alt={entry.institution} className="entry-logo" />
+                  <div className="entry-meta">
+                    <h3 className="entry-org">{entry.institution}</h3>
+                    <span className="entry-sub">{entry.programme}</span>
+                  </div>
+                  <span className="entry-period">{entry.period}</span>
+                </div>
+                <ul className="content-list">
+                  {entry.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </>
+      )
+    }
+
+    const section = t.sections[activeSection]
+    if (activeSection === 'nonProfit') {
+      const voluntary = t.sections.nonProfit
+      return (
+        <>
+          <h2>{voluntary.title}</h2>
+          <div className="voluntary-table">
+            {voluntary.entries.map((entry) => (
+              <div className="voluntary-row" key={`${entry.organisation}-${entry.role}-${entry.period}`}>
+                <div className="voluntary-logo-wrap">
+                  {entry.logo
+                    ? <img src={entry.logo} alt={entry.organisation} className="entry-logo" />
+                    : <span className="entry-logo-placeholder" aria-hidden="true" />
+                  }
+                </div>
+                <span className="voluntary-role">{entry.role}</span>
+                <span className="voluntary-org">{entry.organisation}</span>
+                <span className="voluntary-period">{entry.period}</span>
+              </div>
+            ))}
+          </div>
+        </>
+      )
+    }
+
+    return null
+  }
+
   return (
     <div className="app-shell">
-      <aside className="sidebar">
-        <div>
-          <h1>{t.appTitle}</h1>
-          <p className="intro-text">{t.intro}</p>
-        </div>
+      <header className="topbar">
+        <span className="app-title">{t.appTitle}</span>
 
-        <div className="language-picker">
-          <label htmlFor="language-select">{t.languageLabel}</label>
-          <select
-            id="language-select"
-            value={language}
-            onChange={(event) => setLanguage(event.target.value as Locale)}
-          >
-            <option value="en">English</option>
-            <option value="sv">Svenska</option>
-          </select>
-        </div>
-
-        <nav aria-label={t.sectionsLabel}>
-          <h2>{t.sectionsLabel}</h2>
+        <nav aria-label="Sections">
           <ul>
             {SECTION_ORDER.map((key) => (
               <li key={key}>
@@ -95,15 +233,22 @@ function App() {
             ))}
           </ul>
         </nav>
-      </aside>
 
-      <main className="content">
-        <h2>{section.title}</h2>
-        <ul>
-          {section.items.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
+        <div className="language-picker">
+          <label htmlFor="language-select">{t.languageLabel}</label>
+          <select
+            id="language-select"
+            value={language}
+            onChange={(event) => setLanguage(event.target.value as Locale)}
+          >
+            <option value="en">English</option>
+            <option value="sv">Svenska</option>
+          </select>
+        </div>
+      </header>
+
+      <main className="content" ref={contentRef}>
+        {renderContent()}
       </main>
     </div>
   )

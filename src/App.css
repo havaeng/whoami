@@ -6,104 +6,336 @@ body {
   margin: 0;
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   color: #1f2937;
-  background: #f3f4f6;
+  background: #f9fafb;
 }
 
 #root {
   min-height: 100vh;
 }
 
+/* ── Layout ─────────────────────────────────────────── */
+
 .app-shell {
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-rows: auto 1fr;
   min-height: 100vh;
 }
 
-.sidebar {
-  border-right: 1px solid #e5e7eb;
+/* ── Top bar ─────────────────────────────────────────── */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  padding: 0 1.5rem;
+  height: 60px;
   background: #ffffff;
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-.sidebar h1,
-.sidebar h2 {
+.app-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  white-space: nowrap;
+  opacity: 0; /* anime.js will reveal */
+}
+
+/* Nav centered absolutely */
+.topbar nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.topbar nav ul {
+  display: flex;
+  list-style: none;
   margin: 0;
+  padding: 0;
+  gap: 0.125rem;
 }
 
-.intro-text {
-  margin: 0.5rem 0 0;
-  color: #6b7280;
+.topbar nav li {
+  opacity: 0; /* anime.js will reveal */
 }
 
+.topbar nav button {
+  border: none;
+  background: transparent;
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.875rem;
+  font: inherit;
+  font-size: 0.9rem;
+  color: #374151;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.topbar nav button:hover {
+  background: #f3f4f6;
+}
+
+.topbar nav button.active {
+  background: #f0f0ff;
+  color: #4338ca;
+  font-weight: 600;
+}
+
+/* Language picker — pushed to the far right */
 .language-picker {
+  margin-left: auto;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   gap: 0.5rem;
+  white-space: nowrap;
+  font-size: 0.875rem;
+  opacity: 0; /* anime.js will reveal */
 }
 
 .language-picker select {
   border: 1px solid #d1d5db;
   border-radius: 0.5rem;
-  padding: 0.5rem;
+  padding: 0.3rem 0.5rem;
   font: inherit;
+  font-size: 0.875rem;
   background: #fff;
-}
-
-.sidebar ul {
-  list-style: none;
-  margin: 0.75rem 0 0;
-  padding: 0;
-  display: grid;
-  gap: 0.5rem;
-}
-
-.sidebar button {
-  width: 100%;
-  border: 1px solid #d1d5db;
-  background: #fff;
-  border-radius: 0.5rem;
-  text-align: left;
-  padding: 0.625rem 0.75rem;
-  font: inherit;
-  color: #111827;
   cursor: pointer;
 }
 
-.sidebar button:hover {
-  border-color: #9ca3af;
-}
-
-.sidebar button.active {
-  border-color: #2563eb;
-  background: #eff6ff;
-  color: #1d4ed8;
-}
+/* ── Content area ────────────────────────────────────── */
 
 .content {
-  padding: 2rem;
+  padding: 3rem 2rem;
+  max-width: 780px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .content h2 {
   margin-top: 0;
+  font-size: 1.5rem;
+  color: #111827;
 }
 
-.content ul {
-  margin: 1rem 0 0;
+.content-list {
+  margin: 1.25rem 0 0;
   padding-left: 1.25rem;
   display: grid;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  line-height: 1.6;
+  font-size: 1rem;
+  color: #374151;
 }
 
-@media (max-width: 768px) {
-  .app-shell {
-    grid-template-columns: 1fr;
+/* ── Career & Education entries ──────────────────────── */
+
+.career-entries {
+  display: grid;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.entry-card {
+  border-left: 3px solid #e0e7ff;
+  padding-left: 1.25rem;
+}
+
+.entry-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.entry-logo {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  padding: 4px;
+  flex-shrink: 0;
+}
+
+.entry-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.entry-org {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.entry-sub {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.9rem;
+  color: #4338ca;
+  font-weight: 500;
+}
+
+.entry-period {
+  white-space: nowrap;
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-left: auto;
+}
+
+/* ── Voluntary section ───────────────────────────────── */
+
+.voluntary-table {
+  display: grid;
+  gap: 0;
+  margin-top: 1.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.voluntary-row {
+  display: grid;
+  grid-template-columns: 52px 1fr 1.6fr auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid #f3f4f6;
+  transition: background 0.12s;
+}
+
+.voluntary-row:last-child {
+  border-bottom: none;
+}
+
+.voluntary-row:hover {
+  background: #f9fafb;
+}
+
+.voluntary-logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+}
+
+.entry-logo-placeholder {
+  display: block;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: #e5e7eb;
+}
+
+.voluntary-role {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.voluntary-org {
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.voluntary-period {
+  font-size: 0.82rem;
+  color: #9ca3af;
+  white-space: nowrap;
+  text-align: right;
+}
+
+@media (max-width: 640px) {
+  .voluntary-row {
+    grid-template-columns: 36px 1fr auto;
+    grid-template-rows: auto auto;
   }
 
-  .sidebar {
-    border-right: 0;
-    border-bottom: 1px solid #e5e7eb;
+  .voluntary-org {
+    grid-column: 2;
+    grid-row: 2;
+    font-size: 0.82rem;
+    color: #6b7280;
+  }
+
+  .voluntary-period {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .voluntary-logo-wrap {
+    grid-row: 1 / 3;
+  }
+}
+
+/* ── About section ───────────────────────────────────── */
+
+.about-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  text-align: center;
+}
+
+.portrait {
+  width: 320px;
+  max-width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 4px;
+  opacity: 0; /* anime.js will reveal */
+}
+
+.about-text {
+  max-width: 520px;
+  opacity: 0; /* anime.js will reveal */
+}
+
+.about-text h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+.about-text p {
+  line-height: 1.8;
+  color: #4b5563;
+  font-size: 1.05rem;
+}
+
+/* ── Responsive ──────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .topbar {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 0.75rem 1rem;
+    gap: 0.75rem;
+  }
+
+  .topbar nav {
+    position: static;
+    transform: none;
+    order: 3;
+    width: 100%;
+  }
+
+  .topbar nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .language-picker {
+    margin-left: auto;
+  }
+
+  .portrait {
+    width: 220px;
   }
 }

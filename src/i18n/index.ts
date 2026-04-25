@@ -2,21 +2,71 @@ import { en } from './en'
 import { sv } from './sv'
 
 export type Locale = 'en' | 'sv'
-export type SectionKey = 'career' | 'education' | 'nonProfit'
+export type SectionKey = 'about' | 'career' | 'education' | 'nonProfit'
+
+export type AboutSection = {
+  label: string
+  title: string
+  bio: string
+  portraitAlt: string
+}
+
+export type ListSection = {
+  label: string
+  title: string
+  items: string[]
+}
+
+export type CareerEntry = {
+  employer: string
+  role: string
+  period: string
+  logo: string
+  items: string[]
+}
+
+export type CareerSection = {
+  label: string
+  title: string
+  entries: CareerEntry[]
+}
+
+export type EducationEntry = {
+  institution: string
+  programme: string
+  period: string
+  logo: string
+  items: string[]
+}
+
+export type EducationSection = {
+  label: string
+  title: string
+  entries: EducationEntry[]
+}
+
+export type VoluntaryEntry = {
+  organisation: string
+  role: string
+  period: string
+  logo: string
+}
+
+export type VoluntarySection = {
+  label: string
+  title: string
+  entries: VoluntaryEntry[]
+}
 
 export type TranslationDictionary = {
   appTitle: string
-  intro: string
   languageLabel: string
-  sectionsLabel: string
-  sections: Record<
-    SectionKey,
-    {
-      label: string
-      title: string
-      items: string[]
-    }
-  >
+  sections: {
+    about: AboutSection
+    career: CareerSection
+    education: EducationSection
+    nonProfit: VoluntarySection
+  }
 }
 
 export const translations: Record<Locale, TranslationDictionary> = {
