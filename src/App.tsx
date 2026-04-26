@@ -13,6 +13,25 @@ const LANGUAGE_QUERY_PARAM = 'lang'
 const LANGUAGE_STORAGE_KEY = 'whoami.language'
 const SECTION_ORDER: SectionKey[] = ['about', 'career', 'education', 'nonProfit']
 
+/** Renders a string that may contain [label](url) markdown links as React nodes. */
+function parseInlineLinks(text: string): React.ReactNode {
+  const pattern = /\[([^\]]+)\]\(([^)]+)\)/g
+  const parts: React.ReactNode[] = []
+  let last = 0
+  let match: RegExpExecArray | null
+  while ((match = pattern.exec(text)) !== null) {
+    if (match.index > last) parts.push(text.slice(last, match.index))
+    parts.push(
+      <a key={match.index} href={match[2]} target="_blank" rel="noopener noreferrer">
+        {match[1]}
+      </a>
+    )
+    last = match.index + match[0].length
+  }
+  if (last < text.length) parts.push(text.slice(last))
+  return parts.length === 1 ? parts[0] : <>{parts}</>
+}
+
 function getInitialLanguage(): Locale {
   const params = new URLSearchParams(window.location.search)
   const urlLanguage = params.get(LANGUAGE_QUERY_PARAM)
@@ -147,7 +166,7 @@ function App() {
                 </div>
                 <ul className="content-list">
                   {entry.items.map((item) => (
-                    <li key={item}>{item}</li>
+                    <li key={item}>{parseInlineLinks(item)}</li>
                   ))}
                 </ul>
               </div>
@@ -170,12 +189,16 @@ function App() {
                   <div className="entry-meta">
                     <h3 className="entry-org">{entry.institution}</h3>
                     <span className="entry-sub">{entry.programme}</span>
+                    <span className="entry-degree">{entry.degree}</span>
                   </div>
-                  <span className="entry-period">{entry.period}</span>
+                  <div className="entry-right">
+                    <span className="entry-period">{entry.period}</span>
+                    <span className="entry-credits">{entry.credits}</span>
+                  </div>
                 </div>
                 <ul className="content-list">
                   {entry.items.map((item) => (
-                    <li key={item}>{item}</li>
+                    <li key={item}>{parseInlineLinks(item)}</li>
                   ))}
                 </ul>
               </div>

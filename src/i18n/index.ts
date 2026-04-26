@@ -34,6 +34,8 @@ export type CareerSection = {
 export type EducationEntry = {
   institution: string
   programme: string
+  degree: string
+  credits: string
   period: string
   logo: string
   items: string[]
