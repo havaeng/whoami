@@ -31,6 +31,9 @@ export type CareerSection = {
   entries: CareerEntry[]
 }
 
+export type EducationItemGroup = { text: string; items: string[] }
+export type EducationItem = string | EducationItemGroup
+
 export type EducationEntry = {
   institution: string
   programme: string
@@ -38,7 +41,7 @@ export type EducationEntry = {
   credits: string
   period: string
   logo: string
-  items: string[]
+  items: EducationItem[]
 }
 
 export type EducationSection = {
@@ -52,6 +55,7 @@ export type VoluntaryEntry = {
   role: string
   period: string
   logo: string
+  items?: string[]
 }
 
 export type VoluntarySection = {

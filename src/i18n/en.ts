@@ -7,7 +7,13 @@ export const en: TranslationDictionary = {
         about: {
             label: 'About me',
             title: 'About me',
-            bio: 'Senior Software Engineer with a passion for frontend architecture, clean code, and open-source collaboration. Based in Sweden.',
+            bio: 'Train driver turned software engineer, currently working at SJ AB in a DevOps-oriented team. Still driving trains occasionally. \n' +
+                '\n' +
+                'I have a deep and strong interest in classical music and spend a considerable part of my free time with classical music as a trombonist and euphonium player. \n' +
+                '\n' +
+                'Deputy commander of the Home Guard Band of Stockholm. \n' +
+                '\n' +
+                'I\'ve always had an interest in voluntary association work and have served continuously on various boards since 2012. I\'ve held roles such as secretary, treasurer, and vice chair - mostly in music organizations such as wind bands and orchestras.',
             portraitAlt: 'Portrait photo',
         },
         career: {
@@ -102,56 +108,84 @@ export const en: TranslationDictionary = {
                     period: '2015 – 2016',
                     logo: '/trv5.png',
                     items: [
-                        'Vocational internships at SJ AB (Malmö), Hector Rail (Malmö), and Transdev Sverige AB (Öresundståg, Malmö)',
+                        { text: 'Vocational internships (work-based learning):', items: [
+                            'SJ AB (Malmö)',
+                            'Hector Rail (Malmö)',
+                            'Transdev Sverige AB – Öresundståg (Malmö)',
+                        ]},
                     ],
                 },
             ],
         },
         nonProfit: {
-            label: 'Voluntary',
-            title: 'Voluntary Association Work',
+            label: 'Non-profit',
+            title: 'Non-profit organisations',
             entries: [
-                {
-                    organisation: 'BRF Bergsspånet',
-                    role: 'Secretary',
-                    period: '2023 – 2025',
-                    logo: '/brf.jpg',
-                },
                 {
                     organisation: 'Swedish Military Music Society',
                     role: 'Board Member',
                     period: '2016 – 2026',
-                    logo: '/mms.png'
+                    logo: '/mms.png',
+                    items: [
+                        'Webmaster 2025 - 2026',
+                        'Medal and award manager 2018 - 2024',
+                        'Social media manager 2016 - 2018 '
+                    ]
+                },
+                {
+                    organisation: 'BRF Bergsspånet',
+                    role: 'Board member',
+                    period: '2023 – 2025',
+                    logo: '/brf.jpg',
+                    items: [
+                        'Secretary'
+                    ]
                 },
                 {
                     organisation: 'Seko Klubb SJ Syd',
-                    role: 'Treasurer',
+                    role: 'Board Member',
                     period: '2019 – 2022',
                     logo: '/seko.png',
+                    items: [
+                        'Auditor',
+                        'Treasurer'
+                    ]
                 },
                 {
                     organisation: 'The Home Guard Band of Lund',
                     role: 'Treasurer',
                     period: '2019 – 2020',
-                    logo: '/hvmus.png'
+                    logo: '/hvmus.png',
+                    items: [
+                        'Treasurer'
+                    ]
                 },
                 {
                     organisation: 'Göta Brass Band',
-                    role: 'Secretary',
+                    role: 'Board Member',
                     period: '2016 - 2017',
-                    logo: '/gota.png'
+                    logo: '/gota.png',
+                    items: [
+                        'Secretary'
+                    ]
                 },
                 {
                     organisation: 'Göta Brass Band',
-                    role: 'Vice Chairman',
+                    role: 'Board Member',
                     period: '2014 – 2016',
-                    logo: '/gota.png'
+                    logo: '/gota.png',
+                    items: [
+                        'Vice Chairman'
+                    ]
                 },
                 {
                     organisation: 'Royal Swedish Cadet Band',
                     role: 'Board Member',
                     period: '2014 – 2016',
-                    logo: '/muk.png'
+                    logo: '/muk.png',
+                    items: [
+                        'Drum major'
+                    ]
                 },
                 {
                     organisation: 'Royal Swedish Cadet Band',
@@ -169,7 +203,11 @@ export const en: TranslationDictionary = {
                     organisation: 'Sjöbo Youth Orchestra',
                     role: 'Board Member',
                     period: '2006 – 2007',
-                    logo: '/suo.png'
+                    logo: '/suo.png',
+                    items: [
+                        'Youth representative',
+                        'My first elected position in any non-profit organization!',
+                    ]
                 },
             ],
         },

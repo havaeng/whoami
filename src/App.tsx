@@ -5,6 +5,7 @@ import {
   DEFAULT_LOCALE,
   isLocale,
   translations,
+  type EducationItem,
   type Locale,
   type SectionKey,
 } from './i18n'
@@ -30,6 +31,23 @@ function parseInlineLinks(text: string): React.ReactNode {
   }
   if (last < text.length) parts.push(text.slice(last))
   return parts.length === 1 ? parts[0] : <>{parts}</>
+}
+
+/** Renders a single education item — either a plain string or a grouped sub-list. */
+function renderEducationItem(item: EducationItem, index: number): React.ReactNode {
+  if (typeof item === 'string') {
+    return <li key={index}>{parseInlineLinks(item)}</li>
+  }
+  return (
+    <li key={index}>
+      {parseInlineLinks(item.text)}
+      <ul className="sub-items">
+        {item.items.map((sub, i) => (
+          <li key={i}>{parseInlineLinks(sub)}</li>
+        ))}
+      </ul>
+    </li>
+  )
 }
 
 function getInitialLanguage(): Locale {
@@ -197,9 +215,7 @@ function App() {
                   </div>
                 </div>
                 <ul className="content-list">
-                  {entry.items.map((item) => (
-                    <li key={item}>{parseInlineLinks(item)}</li>
-                  ))}
+                  {entry.items.map((item, i) => renderEducationItem(item, i))}
                 </ul>
               </div>
             ))}
@@ -208,24 +224,33 @@ function App() {
       )
     }
 
-    const section = t.sections[activeSection]
+    const _section = t.sections[activeSection]
     if (activeSection === 'nonProfit') {
       const voluntary = t.sections.nonProfit
       return (
         <>
           <h2>{voluntary.title}</h2>
-          <div className="voluntary-table">
+          <div className="career-entries">
             {voluntary.entries.map((entry) => (
-              <div className="voluntary-row" key={`${entry.organisation}-${entry.role}-${entry.period}`}>
-                <div className="voluntary-logo-wrap">
+              <div className="entry-card" key={`${entry.organisation}-${entry.role}-${entry.period}`}>
+                <div className="entry-header">
                   {entry.logo
                     ? <img src={entry.logo} alt={entry.organisation} className="entry-logo" />
                     : <span className="entry-logo-placeholder" aria-hidden="true" />
                   }
+                  <div className="entry-meta">
+                    <h3 className="entry-org">{entry.organisation}</h3>
+                    <span className="entry-sub">{entry.role}</span>
+                  </div>
+                  <span className="entry-period">{entry.period}</span>
                 </div>
-                <span className="voluntary-role">{entry.role}</span>
-                <span className="voluntary-org">{entry.organisation}</span>
-                <span className="voluntary-period">{entry.period}</span>
+                {entry.items && entry.items.length > 0 && (
+                  <ul className="content-list">
+                    {entry.items.map((item) => (
+                      <li key={item}>{parseInlineLinks(item)}</li>
+                    ))}
+                  </ul>
+                )}
               </div>
             ))}
           </div>

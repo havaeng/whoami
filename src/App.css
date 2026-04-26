@@ -138,6 +138,20 @@ body {
   color: #3730a3;
 }
 
+.sub-items {
+  margin: 0.4rem 0 0;
+  padding-left: 1.25rem;
+  display: grid;
+  gap: 0.3rem;
+  list-style: circle;
+  font-size: 0.92em;
+  color: #6b7280;
+  line-height: 1.5;
+}
+.content-list a:hover {
+  color: #3730a3;
+}
+
 /* ── Career & Education entries ──────────────────────── */
 
 .career-entries {
