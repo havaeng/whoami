@@ -212,6 +212,14 @@ function App() {
                     <div className="about-text">
                         <h2>{about.title}</h2>
                         <p>{about.bio}</p>
+                        <a
+                            href="https://www.linkedin.com/in/havaeng/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="contact-link"
+                        >
+                            {about.contactLabel}
+                        </a>
                     </div>
                 </div>
             )

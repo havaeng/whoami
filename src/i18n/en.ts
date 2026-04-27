@@ -15,6 +15,7 @@ export const en: TranslationDictionary = {
                 '\n' +
                 'I\'ve always had an interest in voluntary association work, and as of 2026, I find myself— for the first time since 2012— not involved in any non-profit organization. I\'ve held roles such as secretary, treasurer, and vice chair - mostly in music organizations such as wind bands and orchestras..',
             portraitAlt: 'Portrait photo',
+            contactLabel: 'Get in touch on LinkedIn',
         },
         career: {
             label: 'Career',

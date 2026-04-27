@@ -9,6 +9,7 @@ export type AboutSection = {
   title: string
   bio: string
   portraitAlt: string
+  contactLabel: string
 }
 
 export type ListSection = {

@@ -7,8 +7,15 @@ export const sv: TranslationDictionary = {
         about: {
             label: 'Om mig',
             title: 'Om mig',
-            bio: 'Senior mjukvaruutvecklare med passion för frontend-arkitektur, ren kod och open source-samarbete. Baserad i Sverige.',
+            bio: 'Tidigare lokförare och sedermera systemutvecklare. Arbetar för närvarande på SJ AB i ett DevOps-inriktat team. Kör fortfarande tåg då och då.\n' +
+                '\n' +
+                'Jag har ett djupt och starkt intresse för klassisk musik och tillbringar en stor del av min fritid med klassisk musik som eufonist och trombonist.\n' +
+                '\n' +
+                'Ställföreträdande chef för Hemvärnets Musikkår Stockholm.\n' +
+                '\n' +
+                'Jag har alltid haft ett intresse för ideellt arbete, och sedan 2026 befinner jag mig – för första gången sedan 2012 – utan engagemang i någon ideell organisation. Jag har haft roller som sekreterare, kassör och vice ordförande – mestadels i musikrelaterade föreningar som blåsorkestrar och brassband.',
             portraitAlt: 'Porträttfoto',
+            contactLabel: 'Min LinkedIn-profil',
         },
         career: {
             label: 'Karriär',
