@@ -104,9 +104,9 @@ export const sv: TranslationDictionary = {
                     items: [
                         {
                             text: 'LIA-praktik (lärande i arbete):', items: [
-                                'SJ AB (Malmö)',
-                                'Hector Rail (Malmö)',
-                                'Transdev Sverige AB – Öresundståg (Malmö)',
+                                'SJ AB, 5 veckor, Malmö',
+                                'Hector Rail, 10 veckor, Malmö - varav två veckor av bangårdspraktik i Hallsberg',
+                                'Transdev Sverige AB (Öresundståg), 5 veckor, Malmö',
                             ]
                         },
                     ],
@@ -139,11 +139,20 @@ export const sv: TranslationDictionary = {
                 },
                 {
                     organisation: 'Seko Klubb SJ Syd',
-                    role: 'Ledamot',
+                    role: 'Revisor',
                     period: '2019 – 2022',
                     logo: '/seko.png',
                     items: [
                         'Revisor',
+                        'Kassör'
+                    ]
+                },
+                {
+                    organisation: 'Seko Klubb SJ Syd',
+                    role: 'Ledamot',
+                    period: '2019 – 2022',
+                    logo: '/seko.png',
+                    items: [
                         'Kassör'
                     ]
                 },

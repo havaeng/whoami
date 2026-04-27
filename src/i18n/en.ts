@@ -143,11 +143,19 @@ export const en: TranslationDictionary = {
                 },
                 {
                     organisation: 'Seko Klubb SJ Syd',
-                    role: 'Board Member',
+                    role: 'Auditor',
                     period: '2019 – 2022',
                     logo: '/seko.png',
                     items: [
                         'Auditor',
+                    ]
+                },
+                {
+                    organisation: 'Seko Klubb SJ Syd',
+                    role: 'Board Member',
+                    period: '2019 – 2022',
+                    logo: '/seko.png',
+                    items: [
                         'Treasurer'
                     ]
                 },
