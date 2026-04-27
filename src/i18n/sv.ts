@@ -199,7 +199,8 @@ export const sv: TranslationDictionary = {
                     period: '2014 – 2016',
                     logo: '/muk.png',
                     items: [
-                        'Flaggtrumslagare'
+                        'Flaggtrumslagare',
+                        'Instruktör'
                     ]
                 },
                 {
@@ -212,7 +213,11 @@ export const sv: TranslationDictionary = {
                     organisation: 'Hemvärnets musikkår Eslöv',
                     role: 'Suppleant',
                     period: '2013 – 2014',
-                    logo: '/hvmus.png'
+                    logo: '/hvmus.png',
+                    items: [
+                        'Hemvärnstrumslagare (vik)',
+                        'Programråd'
+                    ]
                 },
                 {
                     organisation: 'Sjöbo ungdomsorkester',

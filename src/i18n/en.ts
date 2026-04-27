@@ -197,7 +197,8 @@ export const en: TranslationDictionary = {
                     period: '2014 – 2016',
                     logo: '/muk.png',
                     items: [
-                        'Drum major'
+                        'Drum major',
+                        'Instructor'
                     ]
                 },
                 {
@@ -210,7 +211,11 @@ export const en: TranslationDictionary = {
                     organisation: 'The Home Guard  Band of Eslöv',
                     role: 'Alternate Member',
                     period: '2013 – 2014',
-                    logo: '/hvmus.png'
+                    logo: '/hvmus.png',
+                    items: [
+                        'Drum major (deputy)',
+                        'Program council'
+                    ]
                 },
                 {
                     organisation: 'Sjöbo Youth Orchestra',

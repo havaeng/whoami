@@ -30,6 +30,9 @@ const TECH_STACK = [
     {name: 'Java', logo: '/java.png'},
     {name: 'Azure DevOps', logo: '/azure-devops.jpeg'},
     {name: 'Miro', logo: '/miro.png'},
+    {name: 'React', logo: '/react.png'},
+    {name: 'Argo CD', logo: '/argo.png'},
+    {name: 'Jira', logo: '/jira.jpeg'},
 ]
 
 /** Flip card for a single tech stack item. */
