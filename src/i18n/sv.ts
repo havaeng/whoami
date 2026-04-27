@@ -1,7 +1,7 @@
 import type {TranslationDictionary} from './index'
 
 export const sv: TranslationDictionary = {
-    appTitle: 'whoami',
+    appTitle: 'Anthon Haväng',
     languageLabel: 'Språk',
     sections: {
         about: {
@@ -13,13 +13,13 @@ export const sv: TranslationDictionary = {
                 '\n' +
                 'Ställföreträdande chef för Hemvärnets Musikkår Stockholm.\n' +
                 '\n' +
-                'Jag har alltid haft ett intresse för ideellt arbete, och sedan 2026 befinner jag mig – för första gången sedan 2012 – utan engagemang i någon ideell organisation. Jag har haft roller som sekreterare, kassör och vice ordförande – mestadels i musikrelaterade föreningar som blåsorkestrar och brassband.',
+                'Jag har alltid haft ett intresse för ideellt arbete, och sedan 2026 befinner jag mig – för första gången sedan 2012 – i en situation helt utan engagemang i någon ideell organisation. Jag har haft roller som sekreterare, kassör och vice ordförande – mestadels i musikrelaterade föreningar som blåsorkestrar och brassband.',
             portraitAlt: 'Porträttfoto',
-            contactLabel: 'Min LinkedIn-profil',
+            contactLabel: 'Hör av dig på LinkedIn',
         },
         career: {
-            label: 'Karriär',
-            title: 'Karriär',
+            label: 'Erfarenhet',
+            title: 'Arbetslivserfarenhet',
             entries: [
                 {
                     employer: 'SJ AB',

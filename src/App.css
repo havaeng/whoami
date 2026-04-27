@@ -363,21 +363,30 @@ body {
 }
 
 .contact-link {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   margin-top: 1.25rem;
   padding: 0.55rem 1.25rem;
-  background: #4338ca;
-  color: #ffffff;
+  background: #ffffff;
+  color: #0a66c2;
   font-size: 0.9rem;
   font-weight: 600;
   border-radius: 0.5rem;
+  border: 1.5px solid #0a66c2;
   text-decoration: none;
   transition: background 0.15s, transform 0.15s;
 }
 
 .contact-link:hover {
-  background: #3730a3;
+  background: #e8f0fe;
   transform: translateY(-1px);
+}
+
+.contact-link-logo {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
 }
 
 /* ── Tech Stack grid ─────────────────────────────────── */

@@ -1,7 +1,7 @@
 import type {TranslationDictionary} from './index'
 
 export const en: TranslationDictionary = {
-    appTitle: 'whoami',
+    appTitle: 'Anthon Haväng',
     languageLabel: 'Language',
     sections: {
         about: {

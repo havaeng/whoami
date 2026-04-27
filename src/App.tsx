@@ -221,6 +221,7 @@ function App() {
                             rel="noopener noreferrer"
                             className="contact-link"
                         >
+                            <img src="/linkedin.png" alt="LinkedIn" className="contact-link-logo" />
                             {about.contactLabel}
                         </a>
                     </div>
