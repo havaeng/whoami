@@ -144,7 +144,6 @@ export const sv: TranslationDictionary = {
                     logo: '/seko.png',
                     items: [
                         'Revisor',
-                        'Kassör'
                     ]
                 },
                 {
