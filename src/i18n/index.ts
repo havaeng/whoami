@@ -2,7 +2,7 @@ import { en } from './en'
 import { sv } from './sv'
 
 export type Locale = 'en' | 'sv'
-export type SectionKey = 'about' | 'career' | 'education' | 'nonProfit'
+export type SectionKey = 'about' | 'career' | 'education' | 'nonProfit' | 'techStack'
 
 export type AboutSection = {
   label: string
@@ -64,6 +64,11 @@ export type VoluntarySection = {
   entries: VoluntaryEntry[]
 }
 
+export type TechStackSection = {
+  label: string
+  title: string
+}
+
 export type TranslationDictionary = {
   appTitle: string
   languageLabel: string
@@ -72,6 +77,7 @@ export type TranslationDictionary = {
     career: CareerSection
     education: EducationSection
     nonProfit: VoluntarySection
+    techStack: TechStackSection
   }
 }
 

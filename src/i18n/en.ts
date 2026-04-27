@@ -13,7 +13,7 @@ export const en: TranslationDictionary = {
                 '\n' +
                 'Deputy commander of the Home Guard Band of Stockholm. \n' +
                 '\n' +
-                'I\'ve always had an interest in voluntary association work and have served continuously on various boards since 2012. I\'ve held roles such as secretary, treasurer, and vice chair - mostly in music organizations such as wind bands and orchestras.',
+                'I\'ve always had an interest in voluntary association work, and as of 2026, I find myself— for the first time since 2012— not involved in any non-profit organization. I\'ve held roles such as secretary, treasurer, and vice chair - mostly in music organizations such as wind bands and orchestras..',
             portraitAlt: 'Portrait photo',
         },
         career: {
@@ -116,6 +116,10 @@ export const en: TranslationDictionary = {
                     ],
                 },
             ],
+        },
+        techStack: {
+            label: 'Tech Stack',
+            title: 'Tech Stack',
         },
         nonProfit: {
             label: 'Non-profit',

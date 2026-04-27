@@ -113,6 +113,10 @@ export const sv: TranslationDictionary = {
                 },
             ],
         },
+        techStack: {
+            label: 'Teknikstack',
+            title: 'Teknikstack',
+        },
         nonProfit: {
             label: 'Ideellt arbete',
             title: 'Förtroendeuppdrag',
