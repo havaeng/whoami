@@ -10,6 +10,9 @@ import {
     type SectionKey,
 } from './i18n'
 
+/** Resolves a public asset path against the Vite base URL. */
+const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
+
 const PARTICLES = Array.from({length: 28}, (_, i) => ({
     id: i,
     left: `${Math.random() * 100}%`,
@@ -65,7 +68,8 @@ function TechCard({name, logo, largeLogo}: { name: string; logo: string; largeLo
         >
             <div className="tech-card-inner" ref={innerRef}>
                 <div className="tech-card-front">
-                    <img src={logo} alt={name} className="tech-logo" style={largeLogo ? {width: 78, height: 78} : undefined}/>
+                    <img src={asset(logo)} alt={name} className="tech-logo"
+                         style={largeLogo ? {width: 78, height: 78} : undefined}/>
                 </div>
                 <div className="tech-card-back">
                     <span className="tech-name">{name}</span>
@@ -148,7 +152,7 @@ function App() {
         return () => window.removeEventListener('popstate', onPopState)
     }, [])
 
-  // Floating particles
+    // Floating particles
     useEffect(() => {
         animate('.particle', {
             translateX: () => Math.random() * 70 - 35,
@@ -229,7 +233,7 @@ function App() {
             return (
                 <div className="about-section">
                     <img
-                        src="/portrait.jpeg"
+                        src={asset('/portrait.jpeg')}
                         alt={about.portraitAlt}
                         className="portrait"
                     />
@@ -241,7 +245,7 @@ function App() {
                             rel="noopener noreferrer"
                             className="contact-link"
                         >
-                            <img src="/linkedin.png" alt="LinkedIn" className="contact-link-logo" />
+                            <img src={asset('/linkedin.png')} alt="LinkedIn" className="contact-link-logo"/>
                             {about.contactLabel}
                         </a>
                     </div>
@@ -258,7 +262,7 @@ function App() {
                         {career.entries.map((entry) => (
                             <div className="entry-card" key={`${entry.employer}-${entry.role}`}>
                                 <div className="entry-header">
-                                    <img src={entry.logo} alt={entry.employer} className="entry-logo"/>
+                                    <img src={asset(entry.logo)} alt={entry.employer} className="entry-logo"/>
                                     <div className="entry-meta">
                                         <h3 className="entry-org">{entry.employer}</h3>
                                         <span className="entry-sub">{entry.role}</span>
@@ -286,7 +290,7 @@ function App() {
                         {education.entries.map((entry) => (
                             <div className="entry-card" key={`${entry.institution}-${entry.programme}`}>
                                 <div className="entry-header">
-                                    <img src={entry.logo} alt={entry.institution} className="entry-logo"/>
+                                    <img src={asset(entry.logo)} alt={entry.institution} className="entry-logo"/>
                                     <div className="entry-meta">
                                         <h3 className="entry-org">{entry.institution}</h3>
                                         <span className="entry-sub">{entry.programme}</span>
@@ -313,7 +317,8 @@ function App() {
                     <h2>{t.sections.techStack.title}</h2>
                     <div className="tech-stack-grid">
                         {TECH_STACK.map((tech) => (
-                            <TechCard key={tech.name} name={tech.name} logo={tech.logo} largeLogo={tech.name === 'Kotlin (server-side)'}/>
+                            <TechCard key={tech.name} name={tech.name} logo={tech.logo}
+                                      largeLogo={tech.name === 'Kotlin (server-side)'}/>
                         ))}
                     </div>
                 </>
@@ -331,7 +336,7 @@ function App() {
                             <div className="entry-card" key={`${entry.organisation}-${entry.role}-${entry.period}`}>
                                 <div className="entry-header">
                                     {entry.logo
-                                        ? <img src={entry.logo} alt={entry.organisation} className="entry-logo"/>
+                                        ? <img src={asset(entry.logo)} alt={entry.organisation} className="entry-logo"/>
                                         : <span className="entry-logo-placeholder" aria-hidden="true"/>
                                     }
                                     <div className="entry-meta">
