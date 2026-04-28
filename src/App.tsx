@@ -10,6 +10,13 @@ import {
     type SectionKey,
 } from './i18n'
 
+const PARTICLES = Array.from({length: 28}, (_, i) => ({
+    id: i,
+    left: `${Math.random() * 100}%`,
+    top: `${Math.random() * 100}%`,
+    size: Math.random() * 5 + 3,
+}))
+
 const LANGUAGE_QUERY_PARAM = 'lang'
 const LANGUAGE_STORAGE_KEY = 'whoami.language'
 const SECTION_ORDER: SectionKey[] = ['about', 'career', 'education', 'nonProfit', 'techStack']
@@ -141,6 +148,20 @@ function App() {
         return () => window.removeEventListener('popstate', onPopState)
     }, [])
 
+  // Floating particles
+    useEffect(() => {
+        animate('.particle', {
+            translateX: () => Math.random() * 70 - 35,
+            translateY: () => Math.random() * 70 - 35,
+            opacity: () => 0.15 + Math.random() * 0.45,
+            duration: () => 5000 + Math.random() * 6000,
+            delay: () => Math.random() * 3000,
+            loop: true,
+            direction: 'alternate',
+            easing: 'easeInOutSine',
+        })
+    }, [])
+
     // Topbar entrance on mount
     useEffect(() => {
         animate('.app-title', {
@@ -213,7 +234,6 @@ function App() {
                         className="portrait"
                     />
                     <div className="about-text">
-                        <h2>{about.title}</h2>
                         <p>{about.bio}</p>
                         <a
                             href="https://www.linkedin.com/in/havaeng/"
@@ -339,6 +359,15 @@ function App() {
 
     return (
         <div className="app-shell">
+            <div className="particles-bg" aria-hidden="true">
+                {PARTICLES.map((p) => (
+                    <span
+                        key={p.id}
+                        className="particle"
+                        style={{left: p.left, top: p.top, width: p.size, height: p.size}}
+                    />
+                ))}
+            </div>
             <header className="topbar">
                 <span className="app-title">{t.appTitle}</span>
 
