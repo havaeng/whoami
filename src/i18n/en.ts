@@ -7,7 +7,7 @@ export const en: TranslationDictionary = {
         about: {
             label: 'About me',
             title: 'About me',
-            bio: 'Train driver turned software engineer, currently working at SJ AB in a DevOps-oriented team. Still driving trains occasionally. \n' +
+            bio: 'Train driver turned software engineer, currently working at SJ AB in a DevOps-oriented team. Still driving trains occasionally. Born in 1994.\n' +
                 '\n' +
                 'I have a deep and strong interest in classical music and spend a considerable part of my free time with classical music as a trombonist and euphonium player. \n' +
                 '\n' +

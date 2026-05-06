@@ -7,7 +7,7 @@ export const sv: TranslationDictionary = {
         about: {
             label: 'Om mig',
             title: 'Om mig',
-            bio: 'Tidigare lokförare och sedermera systemutvecklare. Arbetar för närvarande på SJ AB i ett DevOps-inriktat team. Kör fortfarande tåg då och då.\n' +
+            bio: 'Tidigare lokförare och sedermera systemutvecklare. Arbetar för närvarande på SJ AB i ett DevOps-inriktat team. Kör fortfarande tåg då och då. Född 1994\n' +
                 '\n' +
                 'Jag har ett djupt och starkt intresse för klassisk musik och tillbringar en stor del av min fritid med klassisk musik som eufonist och trombonist.\n' +
                 '\n' +
