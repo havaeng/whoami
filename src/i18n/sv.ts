@@ -7,7 +7,7 @@ export const sv: TranslationDictionary = {
         about: {
             label: 'Om mig',
             title: 'Om mig',
-            bio: 'Tidigare lokförare och sedermera systemutvecklare. Arbetar för närvarande på SJ AB i ett DevOps-inriktat team. Kör fortfarande tåg då och då. Född 1994. \n' +
+            bio: 'Tidigare lokförare och sedermera systemutvecklare. Arbetar för närvarande på SJ AB i ett DevOps-inriktat team. Kör fortfarande tåg då och då. Född 1994, verksam i Stockholm. \n' +
                 '\n' +
                 'Jag har ett djupt och starkt intresse för klassisk musik och tillbringar en stor del av min fritid med klassisk musik som eufonist och trombonist.\n' +
                 '\n' +
@@ -151,7 +151,7 @@ export const sv: TranslationDictionary = {
                 {
                     organisation: 'Seko Klubb SJ Syd',
                     role: 'Revisor',
-                    period: '2019 – 2022',
+                    period: '2021 – 2022',
                     logo: '/seko.png',
                     items: [
                         'Revisor',
@@ -160,7 +160,7 @@ export const sv: TranslationDictionary = {
                 {
                     organisation: 'Seko Klubb SJ Syd',
                     role: 'Ledamot',
-                    period: '2019 – 2022',
+                    period: '2019 – 2021',
                     logo: '/seko.png',
                     items: [
                         'Kassör'

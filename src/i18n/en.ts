@@ -7,7 +7,7 @@ export const en: TranslationDictionary = {
         about: {
             label: 'About me',
             title: 'About me',
-            bio: 'Train driver turned software engineer, currently working at SJ AB in a DevOps-oriented team. Still driving trains occasionally. Born in 1994.\n' +
+            bio: 'Train driver turned software engineer, currently working at SJ AB in a DevOps-oriented team. Still driving trains occasionally. Born in 1994, based in Stockholm.\n' +
                 '\n' +
                 'I have a deep and strong interest in classical music and spend a considerable part of my free time with classical music as a trombonist and euphonium player. \n' +
                 '\n' +
@@ -149,7 +149,7 @@ export const en: TranslationDictionary = {
                 {
                     organisation: 'Seko Klubb SJ Syd',
                     role: 'Auditor',
-                    period: '2019 – 2022',
+                    period: '2021 – 2022',
                     logo: '/seko.png',
                     items: [
                         'Auditor',
@@ -158,7 +158,7 @@ export const en: TranslationDictionary = {
                 {
                     organisation: 'Seko Klubb SJ Syd',
                     role: 'Board Member',
-                    period: '2019 – 2022',
+                    period: '2019 – 2021',
                     logo: '/seko.png',
                     items: [
                         'Treasurer'
